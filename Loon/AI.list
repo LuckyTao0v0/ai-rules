@@ -3,6 +3,7 @@
 # SOURCE: https://github.com/blackmatrix7/ios_rule_script
 # GENERATED: Do not edit manually; update sources.txt or Loon/custom.list instead.
 
+
 # > OpenAI
 DOMAIN,browser-intake-datadoghq.com
 DOMAIN,chat.openai.com.cdn.cloudflare.net
@@ -39,10 +40,12 @@ DOMAIN-KEYWORD,openai
 IP-ASN,20473,no-resolve
 IP-CIDR,24.199.123.28/32,no-resolve
 IP-CIDR,64.23.132.171/32,no-resolve
+
 # > Claude
 DOMAIN,cdn.usefathom.com
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
+
 # > Gemini
 DOMAIN,ai.google.dev
 DOMAIN,alkalimakersuite-pa.clients6.google.com
