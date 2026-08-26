@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '17 3 * * *'
   workflow_dispatch:
+  push:
+    paths:
+      - 'sources.txt'
+      - 'scripts/update.sh'
+      - 'Loon/custom.list'
 
 permissions:
   contents: write
