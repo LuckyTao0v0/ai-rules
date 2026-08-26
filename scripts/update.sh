@@ -22,14 +22,18 @@ while IFS= read -r entry || [[ -n "$entry" ]]; do
     exit 1
   fi
 
+  # 每个自动更新的 AI 分组前留一个空行
+  echo >> "$tmp_file"
   echo "# > $name" >> "$tmp_file"
 
   curl --fail --location --silent --show-error --retry 3 "$source" |
     sed -e 's/\r$//' -e '/^[[:space:]]*#/d' -e '/^[[:space:]]*$/d' >> "$tmp_file"
 done < "$sources_file"
 
+# 合并自定义规则，保留其中的注释与空行
 if [[ -f "$custom_file" ]]; then
-  sed -e 's/\r$//' -e '/^[[:space:]]*$/d' "$custom_file" >> "$tmp_file"
+  echo >> "$tmp_file"
+  sed -e 's/\r$//' "$custom_file" >> "$tmp_file"
 fi
 
 {
@@ -38,5 +42,7 @@ fi
   echo '# SOURCE: https://github.com/blackmatrix7/ios_rule_script'
   echo '# GENERATED: Do not edit manually; update sources.txt or Loon/custom.list instead.'
   echo
-  awk '!seen[$0]++' "$tmp_file"
+
+  # 非空规则行全局去重；空行和注释分组保持原样
+  awk 'NF { if (!seen[$0]++) print } !NF { print }' "$tmp_file"
 } > "$output_file"
