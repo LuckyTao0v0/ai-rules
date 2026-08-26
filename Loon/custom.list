@@ -1,0 +1,5 @@
+# 自定义 AI 规则
+
+# Grok / xAI
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
