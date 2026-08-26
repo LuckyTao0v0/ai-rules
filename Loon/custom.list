@@ -3,3 +3,7 @@
 # Grok / xAI
 DOMAIN-SUFFIX,x.ai
 DOMAIN-SUFFIX,grok.com
+
+# Qwen
+DOMAIN-SUFFIX,qwen.ai
+DOMAIN-KEYWORD,qwen
